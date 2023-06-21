@@ -15,6 +15,7 @@ targets = ["x86_64-unknown-linux-gnu"]
 [dependencies]
 codec = { package = "parity-scale-codec", version = "3.2.2", default-features = false, features = ["derive"] }
 scale-info = { version = "2.5.0", default-features = false, features = ["derive"] }
+pallet-utility = {version = "4.0.0-dev",default-features = false,git = "https://github.com/paritytech/substrate.git",branch = "polkadot-v0.9.42"}
 
 pallet-aura = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.42" }
 pallet-balances = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.42" }
@@ -38,6 +39,7 @@ sp-session = { version = "4.0.0-dev", default-features = false, git = "https://g
 sp-std = { version = "5.0.0", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.42" }
 sp-transaction-pool = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.42" }
 sp-version = { version = "5.0.0", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.42" }
+pallet-nicks = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.42" }
 
 # Used for the node template's RPCs
 frame-system-rpc-runtime-api = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.42" }
@@ -49,6 +51,7 @@ frame-system-benchmarking = { version = "4.0.0-dev", default-features = false, g
 
 # Local Dependencies
 pallet-template = { version = "4.0.0-dev", default-features = false, path = "../pallets/template" }
+pallet-myown = { version = "4.0.0-dev", default-features = false, path = "../pallets/pallet-myown"}
 
 [build-dependencies]
 substrate-wasm-builder = { version = "5.0.0-dev", git = "https://github.com/paritytech/substrate.git", optional = true , branch = "polkadot-v0.9.42" }
@@ -56,6 +59,7 @@ substrate-wasm-builder = { version = "5.0.0-dev", git = "https://github.com/pari
 [features]
 default = ["std"]
 std = [
+	"pallet-utility/std",
 	"frame-try-runtime?/std",
 	"frame-system-benchmarking?/std",
 	"frame-benchmarking?/std",
@@ -87,6 +91,8 @@ std = [
 	"sp-transaction-pool/std",
 	"sp-version/std",
 	"substrate-wasm-builder",
+	"pallet-myown/std",
+	"pallet-nicks/std"
 ]
 runtime-benchmarks = [
 	"frame-benchmarking/runtime-benchmarks",
